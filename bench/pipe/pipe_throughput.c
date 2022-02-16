@@ -41,8 +41,8 @@ int main(int argc, const char* argv[]) {
     posix_spawn_file_actions_addclose(&file_actions, pipe_wr_fd);
 
     int child_pid;
-    if (posix_spawn(&child_pid, "dev_null", &file_actions,
-            NULL, NULL, NULL) < 0) {
+    char *spawn_argv[] = {"dev_null", NULL};
+    if (posix_spawn(&child_pid, "dev_null", &file_actions, NULL, spawn_argv, NULL) < 0) {
         perror("ERROR: failed to spawn a child process\n");
         return -1;
     }

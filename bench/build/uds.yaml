@@ -1,0 +1,15 @@
+includes:
+  - base.yaml
+# fish
+targets:
+  - target: /bin
+    # copy bins
+    copy:
+      - files:
+        - ../unix_socket_throughput
+  
+  - target: /
+    # copy bins
+    copy:
+      - files:
+        - ../data_sink
